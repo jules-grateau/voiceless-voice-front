@@ -1,6 +1,6 @@
 { 
-    "api_key": "ENTER_YOUR_API_KEY",
-    "voice": {
+    "API_KEY":"ENTER YOUR API KEY",
+    "VOICE": {
         "languageCode": "fr-FR",
         "name": "fr-FR-Standard-B",
         "ssmlGender": "MALE"
