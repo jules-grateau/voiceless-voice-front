@@ -1,6 +1,7 @@
 const axios = require('axios');
 const fs = require('fs');
-const config = require('../config/user_config.json');
+const CONFIG = require('../config/user_config.json');
+const API_KEY = require('../config/api_key.json');
 
 window.addEventListener('load', function () {
   document.getElementById('message').addEventListener('keyup', (e) => {
@@ -21,14 +22,14 @@ const generateMessage = async (message, fileName) => {
   const request = {
     input: {text: message},
     voice: {
-      ...config.VOICE,
+      ...CONFIG.VOICE,
     },
     audioConfig: {audioEncoding: 'MP3'},
   };
 
   // Performs the text-to-speech request
   axios.post(
-    `https://texttospeech.googleapis.com/v1/text:synthesize?key=${config.API_KEY}`,
+    `https://texttospeech.googleapis.com/v1/text:synthesize?key=${API_KEY.GOOGLE_TTS_API_KEY}`,
     request
   ).then((response) => {
   const audioContent = response.data.audioContent;

@@ -1,5 +1,4 @@
 { 
-    "API_KEY":"ENTER YOUR API KEY",
     "VOICE": {
         "languageCode": "fr-FR",
         "name": "fr-FR-Standard-B",
