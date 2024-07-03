@@ -12,16 +12,30 @@ body, html {
 
 #drag {
     width: 100%;
-    height: 20%;
+    height: 25px;
     cursor: grab;
     background-color: gainsboro;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+#closeBtn {
+    padding-right: 5px;
+    justify-content: center;
+    align-content: center;
+    font-size: 15px;
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+    -webkit-app-region: no-drag;
 }
 
 #message {
-    width: 100%;
-    height: 80%;
+    flex: 1;
     border: none;
     outline: none;
     resize: none;
+    background: #F6F6F6;
     -webkit-app-region: no-drag;
 }

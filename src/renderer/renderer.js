@@ -15,6 +15,11 @@ window.addEventListener('load', function () {
   }
   
 });
+
+  document.getElementById('closeBtn').addEventListener('click', () => {
+    window.close();
+});
+
 });
 
 
