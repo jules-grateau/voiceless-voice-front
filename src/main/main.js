@@ -1,6 +1,5 @@
 const { app, BrowserWindow } = require('electron')
 const { execFile } = require('child_process');
-const path = require('node:path')
 
 const createWindow = () => {
   const mainWindow = new BrowserWindow({
@@ -16,9 +15,7 @@ const createWindow = () => {
   })
 
   mainWindow.loadFile('src/renderer/index.html');
-
-  // Open the DevTools.
-  // mainWindow.webContents.openDevTools()
+  //mainWindow.webContents.openDevTools()
 }
 
 app.whenReady().then(() => {
