@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow } = require('electron');
 const { execFile } = require('child_process');
 
 const createWindow = () => {
@@ -8,36 +8,43 @@ const createWindow = () => {
     frame: false,
     alwaysOnTop: true,
     transparent: true,
+    
     webPreferences: {
-        nodeIntegration: true,
-        contextIsolation: false,
-    }
-  })
+      nodeIntegration: true,
+      contextIsolation: false,
+    },
+  });
+  mainWindow.setVisibleOnAllWorkspaces(true);
+  mainWindow.setFullScreenable(false);
 
   mainWindow.loadFile('src/renderer/index.html');
   //mainWindow.webContents.openDevTools()
-}
+
+};
 
 app.whenReady().then(() => {
-  createWindow()
+  createWindow();
 
   var executablePath = 'AudioToMicrophone/AudioToMicrophone.exe';
   var parameters = ['./'];
-  var readingProcess = execFile(executablePath, parameters, function (err, data) {
-    console.log(err)
-    console.log(data.toString());
+  var readingProcess = execFile(
+    executablePath,
+    parameters,
+    function (err, data) {
+      console.log(err);
+      console.log(data.toString());
 
-    app.on('quit', () => {
+      app.on('quit', () => {
         readingProcess.kill();
-    })
+      });
+    }
+  );
+
+  app.on('activate', () => {
+    if (BrowserWindow.getAllWindows().length === 0) createWindow();
+  });
 });
 
-app.on('activate', () => {
-
-    if (BrowserWindow.getAllWindows().length === 0) createWindow()
-  })
-})
-
 app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') app.quit()
-})
+  if (process.platform !== 'darwin') app.quit();
+});
